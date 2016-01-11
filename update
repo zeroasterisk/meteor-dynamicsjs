@@ -1,0 +1,23 @@
+#!/bin/bash
+# -----------------------------------
+# -- update dynamicsjs from github
+# -----------------------------------
+# https://github.com/michaelvillar/dynamics.js/releases
+# -----------------------------------
+# -- config, set the version
+# -----------------------------------
+
+VER=0.0.9
+
+echo "getting https://github.com/michaelvillar/dynamics.js/releases/download/${VER}/dynamics.js"
+
+rm -f dynamics.min.js
+curl -L "https://github.com/michaelvillar/dynamics.js/releases/download/${VER}/dynamics.js" > dynamics.js
+
+echo "remove 'var dynamics'";
+sed -i1 's/degProperties, dynamics, getCurrentProperties/degProperties, getCurrentProperties/g' dynamics.js
+
+
+echo done
+
+
